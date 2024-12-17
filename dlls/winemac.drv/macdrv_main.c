@@ -60,6 +60,7 @@ int gl_surface_mode = GL_SURFACE_IN_FRONT_OPAQUE;
 int retina_enabled = FALSE;
 int enable_app_nap = FALSE;
 BOOL force_backing_store = FALSE;
+int tiny_cursor_clip = FALSE;
 
 UINT64 app_icon_callback = 0;
 UINT64 app_quit_request_callback = 0;
@@ -361,6 +362,9 @@ static void setup_options(void)
 
     if (!get_config_key(hkey, appkey, "UsePreciseScrolling", buffer, sizeof(buffer)))
         use_precise_scrolling = IS_OPTION_TRUE(buffer[0]);
+
+    if (!get_config_key(hkey, appkey, "TinyCursorClip", buffer, sizeof(buffer)))
+        tiny_cursor_clip = IS_OPTION_TRUE(buffer[0]);
 
     if (!get_config_key(hkey, appkey, "OpenGLSurfaceMode", buffer, sizeof(buffer)))
     {

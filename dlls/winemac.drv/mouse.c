@@ -669,8 +669,12 @@ BOOL macdrv_ClipCursor(const RECT *clip, BOOL reset)
 
     if (clip)
     {
-        rect = CGRectMake(clip->left, clip->top, max(1, clip->right - clip->left),
-                          max(1, clip->bottom - clip->top));
+        if (tiny_cursor_clip) {
+            rect = CGRectMake(max(1, (clip->right - clip->left) / 2), max(1, (clip->bottom - clip->top) / 2), 1, 1);
+        } else {
+            rect = CGRectMake(clip->left, clip->top, max(1, clip->right - clip->left),
+                              max(1, clip->bottom - clip->top));
+        }
     }
     else
         rect = CGRectInfinite;
