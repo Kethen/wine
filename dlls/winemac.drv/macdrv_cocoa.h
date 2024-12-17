@@ -158,6 +158,7 @@ extern CFDictionaryRef localized_strings;
 extern int retina_enabled;  /* Whether Retina mode is enabled via registry setting. */
 extern int retina_on;       /* Whether Retina mode is currently active (enabled and display is in default mode). */
 extern int enable_app_nap;
+extern int tiny_cursor_clip;
 
 static inline CGRect cgrect_mac_from_win(CGRect rect)
 {
